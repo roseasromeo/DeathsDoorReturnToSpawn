@@ -2,6 +2,7 @@ using UnityEngine;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace DDoor.ReturnToSpawn;
 
@@ -15,9 +16,19 @@ internal class ReturnToLastDoorButton
     public void CreateReturnToLastDoorButton()
     {
         string parentScene = "_PLAYER";
+        try
+        {
+            Util.GetByPath(parentScene, "UI_PauseCanvas/MENU_Pause/Content/Panels/MENU_Options/ItemWindow_9slice/ItemWindow/UI_Respawn");
+            return;
+        }
+        catch (InvalidOperationException)
+        {
+            // Continue
+        }
         GameObject optionsPanel = Util.GetByPath(parentScene, "UI_PauseCanvas/MENU_Pause/Content/Panels/MENU_Options/ItemWindow_9slice/ItemWindow");
         GameObject exitToTitle = Util.GetByPath(parentScene, "UI_PauseCanvas/MENU_Pause/Content/Panels/MENU_Options/ItemWindow_9slice/ItemWindow/UI_ExitSession");
         GameObject returnToLastDoorButtonObject = GameObject.Instantiate(exitToTitle, optionsPanel.transform);
+        returnToLastDoorButtonObject.name = "UI_Respawn";
         LocTextTMP buttonText = returnToLastDoorButtonObject.GetComponentInChildren<LocTextTMP>();
         buttonText.locId = "RETURN TO RESPAWN LOCATION";
         if (!modifiedStrings.Contains(buttonText.locId))
@@ -29,6 +40,7 @@ internal class ReturnToLastDoorButton
         GameObject optionsMenuObject = Util.GetByPath(parentScene, "UI_PauseCanvas/MENU_Pause/Content/Panels/MENU_Options");
         GameObject exitToTitlePopup = Util.GetByPath(parentScene, "UI_PauseCanvas/MENU_Pause/Content/Panels/MENU_Options/Popup_ExitToTitle");
         GameObject returnToLastDoorPopup = GameObject.Instantiate(exitToTitlePopup, optionsMenuObject.transform);
+        returnToLastDoorPopup.name = "Popup_Respawn";
         LocTextTMP popupPromptText = returnToLastDoorPopup.transform.Cast<Transform>()
             .First((t) => t.name == "Prompt")
             .gameObject.GetComponentInChildren<LocTextTMP>();
