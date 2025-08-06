@@ -12,7 +12,7 @@ internal class IngameUIManager
 
     public static void ModifyOptionsMenu()
     {
-        returnToLastDoorButton.CreateReturnToLastDoorButton();
+        returnToLastDoorButton.CreateReturnToButtons();
     }
     
     [HarmonyPatch]
