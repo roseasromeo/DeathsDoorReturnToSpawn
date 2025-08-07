@@ -135,9 +135,8 @@ internal class ReturnToLastDoorButton
     }
     private static void ReturnToHall()
     {
-        GameSave saveData = GameSave.GetSaveData();
-        saveData.SetSpawnPoint("lvl_HallOfDoors", "bus_override_spawn"); // Use Grove of Spirits door as respawn point
-        GameSceneManager.instance.Respawn();
+        GameSceneManager.LoadSceneFadeOut("lvl_hallofdoors", 0.1f, true);
+		DoorTrigger.currentTargetDoor = "_debug";
     }
 
     private static void ClosePrompt_ReturnToDoor(bool value)
@@ -150,7 +149,7 @@ internal class ReturnToLastDoorButton
             optionsMenu.canMove = true;
             if (value)
             {
-                optionsMenu.canMove = false;
+                // optionsMenu.canMove = false;
                 UIMenuPauseController.instance.UnPause();
                 ReturnToLastDoor();
             }
@@ -167,7 +166,7 @@ internal class ReturnToLastDoorButton
             optionsMenu.canMove = true;
             if (value)
             {
-                optionsMenu.canMove = false;
+                // optionsMenu.canMove = false;
                 UIMenuPauseController.instance.UnPause();
                 ReturnToHall();
             }
