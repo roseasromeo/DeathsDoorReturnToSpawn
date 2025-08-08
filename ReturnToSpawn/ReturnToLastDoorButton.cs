@@ -135,8 +135,12 @@ internal class ReturnToLastDoorButton
     }
     private static void ReturnToHall()
     {
-        GameSceneManager.LoadSceneFadeOut("lvl_hallofdoors", 0.1f, true);
-		DoorTrigger.currentTargetDoor = "_debug";
+        GameSceneManager.LoadSceneFadeOut("lvl_hallofdoors", 0.2f, true);
+        DoorTrigger.currentTargetDoor = "_debug";
+        ScreenFade.instance.UnLockFade();
+		ScreenFade.instance.SetColor(Color.black, false);
+		ScreenFade.instance.FadeOut(0.2f, true, null);
+		ScreenFade.instance.LockFade();
     }
 
     private static void ClosePrompt_ReturnToDoor(bool value)
