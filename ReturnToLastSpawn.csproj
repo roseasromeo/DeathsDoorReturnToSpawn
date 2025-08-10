@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<RootNamespace>DDoor</RootNamespace>
+		<RootNamespace>DDoor.ReturnToSpawn</RootNamespace>
 		<AssemblyName>ReturnToSpawn</AssemblyName>
 		<AssemblyTitle>Return to Spawn</AssemblyTitle>
 		<Product>ReturnToSpawn</Product>
@@ -50,6 +50,10 @@
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
 			<HintPath>$(ManagedDir)\Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="AddUIToOptionsMenu">
+			<HintPath>$(PluginsPath)/AddUIToOptionsMenu/AddUIToOptionsMenu.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
 
