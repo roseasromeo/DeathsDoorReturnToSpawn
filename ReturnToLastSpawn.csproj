@@ -5,7 +5,7 @@
 		<AssemblyTitle>Return to Spawn</AssemblyTitle>
 		<Product>ReturnToSpawn</Product>
 		<Description>Adds a button to the options menu to return to last spawn point</Description>
-		<Version>0.2.2</Version>
+		<Version>0.3.0</Version>
 		<TargetFramework>net472</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<RestoreAdditionalProjectSources>
