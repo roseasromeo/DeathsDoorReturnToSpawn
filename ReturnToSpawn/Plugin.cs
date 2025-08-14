@@ -42,11 +42,11 @@ public class Plugin : BaseUnityPlugin
 	{
 		OptionsPrompt returnToDoorPrompt = new(promptText: "DO YOU WANT TO RETURN TO YOUR RESPAWN LOCATION?", gameObjectName: "RETURN_TO_SPAWN_Popup_Respawn", closeAction: ReturnToLastDoor);
 		OptionsButton returnToDoorButton = new(itemText: "RETURN TO RESPAWN LOCATION", gameObjectName: "RETURN_TO_SPAWN_UI_Respawn", id: "ReturnToDoor", relevantScenes: [IngameUIManager.RelevantScene.InGame], optionsPrompt: returnToDoorPrompt, contextText: "BUTTON:CONFIRM Return to Respawn Location BUTTON:BACK Back");
-		IngameUIManager.AddOptionsButton(returnToDoorButton);
+		IngameUIManager.AddOptionsMenuItem(returnToDoorButton);
 
 		OptionsPrompt returnToHallPrompt = new(promptText: "DO YOU WANT TO RETURN TO THE HALL OF DOORS?", gameObjectName: "RETURN_TO_SPAWN_Popup_Hall", closeAction: ReturnToHall);
 		OptionsButton returnToHallButton = new(itemText: "RETURN TO HALL OF DOORS", gameObjectName: "RETURN_TO_SPAWN_UI_Hall", id: "ReturnToHall", relevantScenes: [IngameUIManager.RelevantScene.InGame], optionsPrompt: returnToHallPrompt, contextText: "BUTTON:CONFIRM Return to Hall of Doors BUTTON:BACK Back");
-		IngameUIManager.AddOptionsButton(returnToHallButton);
+		IngameUIManager.AddOptionsMenuItem(returnToHallButton);
 	}
 	
 	private static void ReturnToLastDoor()
