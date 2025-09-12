@@ -15,6 +15,7 @@ public class Plugin : BaseUnityPlugin
 
 	public static Plugin Instance => instance;
 	public int InitStatus { get; internal set; } = 0;
+	private bool addedButtons = false;
 
 	private void Awake()
 	{
@@ -27,14 +28,22 @@ public class Plugin : BaseUnityPlugin
 
 			new Harmony("deathsdoor.returntospawn").PatchAll();
 
-			AddReturnButtons();
-
 			InitStatus = 1;
 		}
 		catch (System.Exception err)
 		{
 			InitStatus = 2;
 			throw err;
+		}
+	}
+
+	private void Update()
+	{
+		// Add these buttons after all other mods have loaded
+		if (!addedButtons)
+		{
+			AddReturnButtons();
+			addedButtons = true;
 		}
 	}
 
