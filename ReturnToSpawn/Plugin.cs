@@ -15,6 +15,7 @@ public class Plugin : BaseUnityPlugin
 
 	public static Plugin Instance => instance;
 	public int InitStatus { get; internal set; } = 0;
+	private bool addedButtons = false;
 
 	private void Awake()
 	{
@@ -27,14 +28,22 @@ public class Plugin : BaseUnityPlugin
 
 			new Harmony("deathsdoor.returntospawn").PatchAll();
 
-			AddReturnButtons();
-
 			InitStatus = 1;
 		}
 		catch (System.Exception err)
 		{
 			InitStatus = 2;
 			throw err;
+		}
+	}
+
+	private void Update()
+	{
+		// Add these buttons after all other mods have loaded
+		if (!addedButtons)
+		{
+			AddReturnButtons();
+			addedButtons = true;
 		}
 	}
 
@@ -55,6 +64,12 @@ public class Plugin : BaseUnityPlugin
     }
     private static void ReturnToHall()
     {
+		//Remove Jefferson when returning to Hall of Doors
+		if (JeffersonBackpack.instance)
+		{
+			JeffersonBackpack.instance.TurnOff();
+		}
+		GameSceneManager.instance.reloadPlayerScene = true;
         GameSceneManager.LoadSceneFadeOut("lvl_hallofdoors", 0.2f, true);
         DoorTrigger.currentTargetDoor = "_debug";
         ScreenFade.instance.UnLockFade();
