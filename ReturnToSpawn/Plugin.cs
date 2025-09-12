@@ -64,6 +64,12 @@ public class Plugin : BaseUnityPlugin
     }
     private static void ReturnToHall()
     {
+		//Remove Jefferson when returning to Hall of Doors
+		if (JeffersonBackpack.instance)
+		{
+			JeffersonBackpack.instance.TurnOff();
+		}
+		GameSceneManager.instance.reloadPlayerScene = true;
         GameSceneManager.LoadSceneFadeOut("lvl_hallofdoors", 0.2f, true);
         DoorTrigger.currentTargetDoor = "_debug";
         ScreenFade.instance.UnLockFade();
